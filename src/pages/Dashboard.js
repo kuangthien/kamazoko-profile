@@ -115,7 +115,16 @@ const Dashboard = () => (
 						</div>
 					</div>
 					<div className='mainContent'>
-						<Profile />
+						<div className='col col-12'>
+							<div className='row'>
+								<div className='col col-6 col-lg-4'>
+									<Profile />
+								</div>{' '}
+								<div className='col col-6'>
+									Somewhere I belong
+								</div>
+							</div>
+						</div>
 					</div>
 				</main>
 			</div>
