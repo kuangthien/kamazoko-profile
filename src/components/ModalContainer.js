@@ -1,31 +1,43 @@
 import React, { Component } from 'react';
 import Modal from 'react-modal';
 import { AppContext } from '../context';
+import ProfileEditModal from './ProfileEditModal';
 const customStyles = {
 	content: {
-		top: '50%',
 		left: '50%',
 		right: 'auto',
 		bottom: 'auto',
-		marginRight: '-50%',
-		transform: 'translate(-50%, -50%)',
+		transform: 'translateX( -50%)',
 	},
 };
 
 class componentName extends Component {
 	constructor(props) {
 		super(props);
+		Modal.setAppElement('body');
 	}
 
 	render() {
 		return (
 			<div>
+				<style>
+					{`
+					.ReactModal__Overlay  {overflow: auto; z-index:99999}
+					body.ReactModal__Body--open {
+						overflow:hidden
+					}`}
+				</style>
 				<Modal
-					isOpen={this.context.modalOpenStatus}
- 					style={customStyles}
+					isOpen={this.context.modalOpenStatus }
+					style={customStyles}
 					contentLabel='Example Modal'
 				>
-					Modal content
+					<ProfileEditModal
+						handleClose={() => {
+							console.log('a');
+							this.context.setModalOpenStatus(false);
+						}}
+					/>
 				</Modal>
 			</div>
 		);

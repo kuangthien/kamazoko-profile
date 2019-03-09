@@ -27,7 +27,6 @@ class AppProvider extends React.Component {
 class App extends Component {
 	componentDidMount() {
 		window.feather.replace();
-		Modal.setAppElement('.App');
 	}
 	render() {
 		return (
