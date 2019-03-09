@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { AppContext } from '../context';
 const url = process.env.REACT_APP_API_URL;
 
 class Profile extends Component {
@@ -9,6 +10,9 @@ class Profile extends Component {
 			profile: null,
 		};
 	}
+	openModal = () => {
+		this.context.setModalOpenStatus(true)
+	};
 	componentDidMount() {
 		axios
 			.get(`${url}/profile`)
@@ -75,7 +79,11 @@ class Profile extends Component {
 						</table>
 					</div>
 
-					<a href='/' className='mt-2 btn btn-secondary '>
+					<a
+						className='mt-2 btn btn-secondary text-white'
+						onClick={this.openModal}
+						href={`javascript:void(0)`}
+					>
 						Edit Profile
 					</a>
 				</div>
@@ -84,4 +92,5 @@ class Profile extends Component {
 	}
 }
 
+Profile.contextType = AppContext;
 export default Profile;
